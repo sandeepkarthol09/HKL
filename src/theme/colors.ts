@@ -1,8 +1,8 @@
 export const COLORS = {
-  background: '#07070D',
+  background: '#fafaeb',
   cardBackground: 'rgba(22, 22, 38, 0.75)',
   cardBorder: 'rgba(255, 255, 255, 0.08)',
-  textPrimary: '#FFFFFF',
+  textPrimary: '#100e0eff',
   textSecondary: '#94A3B8',
   textMuted: '#64748B',
   primary: '#6366F1', // Indigo
