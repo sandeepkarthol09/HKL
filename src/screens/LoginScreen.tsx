@@ -25,7 +25,6 @@ export const LoginScreen = ({ navigation }: any) => {
   const [emailFocused, setEmailFocused] = useState(false);
   const theme = useAppTheme();
 
-
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(40)).current;
   const formSlide = useRef(new Animated.Value(60)).current;
@@ -71,7 +70,7 @@ export const LoginScreen = ({ navigation }: any) => {
       Alert.alert('Invalid Email', 'Please enter a valid email address.');
       return;
     }
-    navigation.navigate('Main');
+    navigation.navigate('OTP', { email });
   };
 
   const handlePressIn = () => {
@@ -90,7 +89,9 @@ export const LoginScreen = ({ navigation }: any) => {
   };
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
+    <SafeAreaView
+      style={[styles.safeArea, { backgroundColor: theme.background }]}
+    >
       <StatusBar
         barStyle={theme.statusBar as any}
         backgroundColor={theme.statusBarBg}
@@ -101,7 +102,10 @@ export const LoginScreen = ({ navigation }: any) => {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
         <ScrollView
-          contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]}
+          contentContainerStyle={[
+            styles.scrollContent,
+            { backgroundColor: theme.background },
+          ]}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
@@ -117,10 +121,15 @@ export const LoginScreen = ({ navigation }: any) => {
               ]}
             >
               {/* Perfect Circular Logo */}
-              <View style={[styles.logoOuterCircle, {
-                backgroundColor: theme.logoBg,
-                borderColor: theme.logoBorder,
-              }]}>
+              <View
+                style={[
+                  styles.logoOuterCircle,
+                  {
+                    backgroundColor: theme.logoBg,
+                    borderColor: theme.logoBorder,
+                  },
+                ]}
+              >
                 <Image
                   source={imagepaths.logo}
                   style={styles.logoImage}
@@ -128,7 +137,9 @@ export const LoginScreen = ({ navigation }: any) => {
                 />
               </View>
 
-              <Text style={[styles.welcomeText, { color: theme.textPrimary }]}>Welcome to HKL</Text>
+              <Text style={[styles.welcomeText, { color: theme.textPrimary }]}>
+                Welcome to HKL
+              </Text>
               <Text style={[styles.subtitleText, { color: theme.textMuted }]}>
                 Enter the email associated with your HKL account.
               </Text>
@@ -145,13 +156,17 @@ export const LoginScreen = ({ navigation }: any) => {
               ]}
             >
               {/* Email Input */}
-              <View style={[
-                styles.inputWrapper,
-                {
-                  backgroundColor: theme.inputBg,
-                  borderColor: emailFocused ? theme.inputBorderFocused : theme.inputBorder,
-                },
-              ]}>
+              <View
+                style={[
+                  styles.inputWrapper,
+                  {
+                    backgroundColor: theme.inputBg,
+                    borderColor: emailFocused
+                      ? theme.inputBorderFocused
+                      : theme.inputBorder,
+                  },
+                ]}
+              >
                 <TextInput
                   style={[styles.input, { color: theme.inputText }]}
                   placeholder="Your email"
@@ -166,15 +181,30 @@ export const LoginScreen = ({ navigation }: any) => {
               </View>
 
               {/* Centered Continue Button */}
-              <Animated.View style={[styles.buttonContainer, { transform: [{ scale: buttonScale }] }]}>
+              <Animated.View
+                style={[
+                  styles.buttonContainer,
+                  { transform: [{ scale: buttonScale }] },
+                ]}
+              >
                 <TouchableOpacity
-                  style={[styles.continueButton, { backgroundColor: theme.btnBg }]}
+                  style={[
+                    styles.continueButton,
+                    { backgroundColor: theme.btnBg },
+                  ]}
                   onPress={handleLogin}
                   onPressIn={handlePressIn}
                   onPressOut={handlePressOut}
                   activeOpacity={0.9}
                 >
-                  <Text style={[styles.continueButtonText, { color: theme.btnText }]}>Continue</Text>
+                  <Text
+                    style={[
+                      styles.continueButtonText,
+                      { color: theme.btnText },
+                    ]}
+                  >
+                    Continue
+                  </Text>
                 </TouchableOpacity>
               </Animated.View>
             </Animated.View>
@@ -186,17 +216,25 @@ export const LoginScreen = ({ navigation }: any) => {
               By signing in, you agree to the{' '}
               <Text
                 style={[styles.footerLink, { color: theme.linkText }]}
-                onPress={() => Alert.alert('Terms of Service', 'Terms & conditions coming soon.')}
+                onPress={() =>
+                  Alert.alert(
+                    'Terms of Service',
+                    'Terms & conditions coming soon.',
+                  )
+                }
               >
                 terms of service
-              </Text>
-              {' '}and have read the{' '}
+              </Text>{' '}
+              and have read the{' '}
               <Text
                 style={[styles.footerLink, { color: theme.linkText }]}
-                onPress={() => Alert.alert('Privacy Policy', 'Privacy policy coming soon.')}
+                onPress={() =>
+                  Alert.alert('Privacy Policy', 'Privacy policy coming soon.')
+                }
               >
                 privacy policy
-              </Text>.
+              </Text>
+              .
             </Text>
           </View>
         </ScrollView>

@@ -2,11 +2,13 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SplashScreen } from '../screens/SplashScreen';
 import { LoginScreen } from '../screens/LoginScreen';
+import { OTPScreen } from '../screens/OTPScreen';
 import { BottomTabNavigator } from './BottomTabNavigator';
 
 export type RootStackParamList = {
   Splash: undefined;
   Login: undefined;
+  OTP: { email: string };
   Main: undefined;
 };
 
@@ -20,6 +22,7 @@ export const AppNavigator = () => {
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="OTP" component={OTPScreen} />
       <Stack.Screen name="Main" component={BottomTabNavigator} />
     </Stack.Navigator>
   );
