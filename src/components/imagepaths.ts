@@ -1,5 +1,6 @@
 const imagepaths = {
   logo: require('../assets/images/hkl.png'),
+  back:require('../assets/images/back.png'),
 };
 
 export default imagepaths;

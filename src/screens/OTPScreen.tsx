@@ -16,6 +16,9 @@ import {
 } from 'react-native';
 import imagepaths from '../components/imagepaths';
 import { useAppTheme } from '../theme/useAppTheme';
+import Fontsize from '../core/value/Fontsize';
+import FontFamily from '../core/value/Fontfamily';
+import { wp } from '../core/value/Constants';
 
 export const OTPScreen = ({ navigation, route }: any) => {
   const email = route?.params?.email || 'your email';
@@ -114,18 +117,22 @@ export const OTPScreen = ({ navigation, route }: any) => {
         translucent={true}
       />
 
-      {/* Back Button */}
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}
-      >
-        <Text style={[styles.backArrow, { color: theme.textPrimary }]}>←</Text>
-      </TouchableOpacity>
-
       <KeyboardAvoidingView
         style={styles.flex}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
+        {/* Back Button */}
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            source={imagepaths.back}
+            style={styles.backArrow}
+            resizeMode="cover"
+          />
+        </TouchableOpacity>
+
         <ScrollView
           contentContainerStyle={[
             styles.scrollContent,
@@ -212,7 +219,6 @@ export const OTPScreen = ({ navigation, route }: any) => {
               </View>
             </Animated.View>
           </View>
-
           {/* Bottom Links */}
           <View style={styles.footerContainer}>
             <TouchableOpacity
@@ -256,24 +262,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   backButton: {
-    paddingHorizontal: 20,
-    paddingTop: Platform.OS === 'android' ? 36 : 8,
-    paddingBottom: 8,
     alignSelf: 'flex-start',
+    height: wp(8),
+    width: wp(8),
+    marginTop: wp(12),
+    marginLeft: wp(4),
   },
   backArrow: {
-    fontSize: 28,
-    fontWeight: '300',
+    height: wp(6),
+    width: wp(6),
   },
   scrollContent: {
     flexGrow: 1,
     paddingHorizontal: 24,
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
   },
   mainContainer: {
-    flex: 1,
     alignItems: 'center',
-    paddingTop: 40,
+    justifyContent: 'center',
   },
   headerContainer: {
     alignItems: 'center',
@@ -281,9 +287,9 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   logoOuterCircle: {
-    width: 96,
-    height: 96,
-    borderRadius: 48,
+    width: wp(25),
+    height: wp(25),
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 28,
@@ -291,22 +297,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   logoImage: {
-    width: '100%',
-    height: '100%',
+    width: '90%',
+    height: '90%',
   },
   titleText: {
-    fontSize: 32,
-    fontWeight: '700',
-    marginBottom: 12,
+    fontSize: Fontsize.EIGHT,
     textAlign: 'center',
-    letterSpacing: -0.5,
+    fontFamily: FontFamily.GoogleSansBold,
+    marginBottom: wp(-5),
   },
   subtitleText: {
-    fontSize: 16,
-    fontWeight: '400',
     textAlign: 'center',
-    lineHeight: 22,
-    paddingHorizontal: 12,
+    paddingHorizontal: wp(7),
+    fontFamily: FontFamily.GoogleSans17ptMedium,
+    fontSize: Fontsize.THREE_DOT_EIGHT,
   },
   otpContainer: {
     width: '100%',
@@ -316,12 +320,12 @@ const styles = StyleSheet.create({
   otpRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 10,
+    gap: 8,
   },
   otpBox: {
-    width: 52,
-    height: 60,
-    borderRadius: 14,
+    width: wp(13.5),
+    height: wp(13.5),
+    borderRadius: wp(3.5),
     borderWidth: 1.5,
     justifyContent: 'center',
     alignItems: 'center',
@@ -334,28 +338,26 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   footerContainer: {
-    paddingVertical: 24,
     alignItems: 'center',
     width: '100%',
   },
   resendButton: {
-    paddingVertical: 12,
-    marginBottom: 12,
+    marginBottom: wp(1),
   },
   resendText: {
-    fontSize: 15,
-    fontWeight: '600',
+    fontSize: Fontsize.FOUR_DOT_TWO,
+    fontFamily: FontFamily.GoogleSansBold,
   },
   discoverRow: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   discoverText: {
-    fontSize: 14,
-    fontWeight: '400',
+    fontSize: Fontsize.THREE_DOT_EIGHT,
+    fontFamily: FontFamily.GoogleSansRegular,
   },
   discoverLink: {
-    fontSize: 14,
-    fontWeight: '500',
+    fontSize: Fontsize.THREE_DOT_EIGHT,
+    fontFamily: FontFamily.GoogleSansRegular,
   },
 });
