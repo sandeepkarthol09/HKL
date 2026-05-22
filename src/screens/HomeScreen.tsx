@@ -8,6 +8,7 @@ import {
   StatusBar,
   TouchableOpacity,
   Image,
+  FlatList,
 } from 'react-native';
 import { useAppTheme } from '../theme/useAppTheme';
 import Fontsize from '../core/value/Fontsize';
@@ -50,6 +51,118 @@ export const HomeScreen = ({ navigation }: any) => {
       comments: 5,
     },
   ];
+
+  // Render Item for FlatList
+  const renderPostItem = ({ item: post }: any) => (
+    <View style={styles.postCard}>
+      <View style={styles.postHeader}>
+        <View
+          style={[
+            styles.miniAvatar,
+            { backgroundColor: post.id === '1' ? '#2F80ED' : '#27AE60' },
+          ]}
+        >
+          <Text style={styles.miniAvatarText}>{post.avatarInitials}</Text>
+        </View>
+        <Text style={styles.postMetaData} numberOfLines={1}>
+          <Text style={[styles.postAuthor, { color: theme.textPrimary }]}>
+            {post.author}
+          </Text>
+          <Text style={{ color: theme.textMuted }}> in {post.space}</Text>
+          <Text style={{ color: theme.textMuted }}> • {post.timestamp}</Text>
+        </Text>
+      </View>
+
+      {post.type === 'article' ? (
+        <View style={styles.articleContainer}>
+          <Text style={[styles.articleTitle, { color: theme.textPrimary }]}>
+            {post.title}
+          </Text>
+          <Text style={[styles.articleContent, { color: theme.textMuted }]}>
+            {post.content}
+          </Text>
+          <Image
+            source={{ uri: post.imageUri }}
+            style={styles.articleImage}
+            resizeMode="cover"
+          />
+        </View>
+      ) : (
+        <Text style={[styles.pureTextContent, { color: theme.textPrimary }]}>
+          {post.content}
+        </Text>
+      )}
+
+      {/* Interaction Row Footer */}
+      <View style={styles.interactionRow}>
+        <TouchableOpacity style={styles.interactionButton}>
+          <Image
+            source={imagepaths.heart}
+            style={{
+              height: wp(4.5),
+              width: wp(4.5),
+            }}
+          />
+          <Text style={[styles.interactionCount, { color: theme.textMuted }]}>
+            {post.likes}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.interactionButton}>
+          <Text style={[styles.interactionIcon, { color: theme.textMuted }]}>
+            💬
+          </Text>
+          <Text style={[styles.interactionCount, { color: theme.textMuted }]}>
+            {post.comments}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
+  // List Header Component to keep the Commitment Banner scrollable with the list
+  const ListHeader = () => (
+    <View
+      style={[
+        styles.commitmentCard,
+        {
+          backgroundColor: theme.commitmentBg,
+          borderColor: theme.commitmentBorder,
+        },
+      ]}
+    >
+      <View style={styles.commitmentHeaderRow}>
+        <Image
+          source={{
+            uri: 'https://picsum.photos/200/300',
+          }}
+          style={{
+            width: '100%',
+            height: wp(30),
+            borderTopLeftRadius: wp(4),
+            borderTopRightRadius: wp(4),
+          }}
+        />
+      </View>
+
+      <Text style={[styles.commitmentBody, { color: theme.textMuted }]}>
+        🌱 Here is this week's practice. Please log your experience daily by{' '}
+        <Text style={[styles.hyperlinkText, { color: theme.linkText }]}>
+          clicking here
+        </Text>{' '}
+        You can access previous practices by{' '}
+        <Text style={[styles.hyperlinkText, { color: theme.linkText }]}>
+          clicking here
+        </Text>
+      </Text>
+    </View>
+  );
+
+  // Divider Component
+  const renderSeparator = () => (
+    <View
+      style={[styles.itemSeparator, { backgroundColor: theme.textMuted }]}
+    />
+  );
 
   return (
     <SafeAreaView
@@ -107,144 +220,16 @@ export const HomeScreen = ({ navigation }: any) => {
         </ScrollView>
       </View>
 
-      {/* Main Feed Content Scroll list */}
-      <ScrollView
-        contentContainerStyle={styles.scrollContainer}
+      {/* 3 & 4. Main Stream Feed using FlatList */}
+      <FlatList
+        data={feedPosts}
+        renderItem={renderPostItem}
+        keyExtractor={item => item.id}
+        contentContainerStyle={styles.flatListContainer}
         showsVerticalScrollIndicator={false}
-      >
-        {/* 3. My Daily Commitment Card Banner Component */}
-        <View
-          style={[
-            styles.commitmentCard,
-            {
-              backgroundColor: theme.commitmentBg,
-              borderColor: theme.commitmentBorder,
-            },
-          ]}
-        >
-          <View style={styles.commitmentHeaderRow}>
-            <Image
-              source={{
-                uri: 'https://picsum.photos/200/300',
-              }}
-              style={{
-                width: '100%',
-                height: wp(30),
-                borderTopLeftRadius: wp(4),
-                borderTopRightRadius: wp(4),
-              }}
-            />
-          </View>
-
-          <Text style={[styles.commitmentBody, { color: theme.textMuted }]}>
-            🌱 Here is this week's practice. Please log your experience daily by{' '}
-            <Text style={[styles.hyperlinkText, { color: theme.linkText }]}>
-              clicking here
-            </Text>{' '}
-            You can access previous practices by{' '}
-            <Text style={[styles.hyperlinkText, { color: theme.linkText }]}>
-              clicking here
-            </Text>
-          </Text>
-        </View>
-
-        {/* 4. Stream Feed Rendering */}
-        {feedPosts.map(post => (
-          <View key={post.id} style={styles.postCard}>
-            <View style={styles.postHeader}>
-              <View
-                style={[
-                  styles.miniAvatar,
-                  { backgroundColor: post.id === '1' ? '#2F80ED' : '#27AE60' },
-                ]}
-              >
-                <Text style={styles.miniAvatarText}>{post.avatarInitials}</Text>
-              </View>
-              <Text style={styles.postMetaData} numberOfLines={1}>
-                <Text style={[styles.postAuthor, { color: theme.textPrimary }]}>
-                  {post.author}
-                </Text>
-                <Text style={{ color: theme.textMuted }}> in {post.space}</Text>
-                <Text style={{ color: theme.textMuted }}>
-                  {' '}
-                  • {post.timestamp}
-                </Text>
-              </Text>
-            </View>
-
-            {post.type === 'article' ? (
-              <View style={styles.articleContainer}>
-                <Text
-                  style={[styles.articleTitle, { color: theme.textPrimary }]}
-                >
-                  {post.title}
-                </Text>
-                <Text
-                  style={[styles.articleContent, { color: theme.textMuted }]}
-                >
-                  {post.content}
-                </Text>
-                <Image
-                  source={{ uri: post.imageUri }}
-                  style={styles.articleImage}
-                  resizeMode="cover"
-                />
-              </View>
-            ) : (
-              <Text
-                style={[styles.pureTextContent, { color: theme.textPrimary }]}
-              >
-                {post.content}
-              </Text>
-            )}
-
-            {/* Interaction Row Footer */}
-            <View style={styles.interactionRow}>
-              <TouchableOpacity style={styles.interactionButton}>
-                {/* <Text
-                  style={[styles.interactionIcon, { color: theme.textMuted }]}
-                >
-                  ♡
-                </Text> */}
-                <Image
-                  source={imagepaths.heart}
-                  style={{
-                    height: wp(4.5),
-                    width: wp(4.5),
-                  }}
-                />
-                <Text
-                  style={[styles.interactionCount, { color: theme.textMuted }]}
-                >
-                  {post.likes}
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.interactionButton}>
-                <Text
-                  style={[styles.interactionIcon, { color: theme.textMuted }]}
-                >
-                  💬
-                </Text>
-                <Text
-                  style={[styles.interactionCount, { color: theme.textMuted }]}
-                >
-                  {post.comments}
-                </Text>
-              </TouchableOpacity>
-            </View>
-
-            <View
-              style={{
-                width: wp(90),
-                height: wp(0.1),
-                marginTop: wp(4),
-                backgroundColor: theme.textMuted,
-                alignSelf: 'center',
-              }}
-            />
-          </View>
-        ))}
-      </ScrollView>
+        ListHeaderComponent={ListHeader}
+        ItemSeparatorComponent={renderSeparator}
+      />
 
       {/* 5. Floating Action Button Container (FAB) */}
       <TouchableOpacity
@@ -313,9 +298,15 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.GoogleSansMedium,
     includeFontPadding: false,
   },
-  scrollContainer: {
+  flatListContainer: {
     padding: wp(4),
     paddingBottom: wp(22),
+  },
+  itemSeparator: {
+    width: wp(90),
+    height: wp(0.1),
+    marginVertical: wp(4),
+    alignSelf: 'center',
   },
   commitmentCard: {
     borderRadius: wp(4),
@@ -372,7 +363,7 @@ const styles = StyleSheet.create({
     fontSize: Fontsize.THREE_DOT_FIVE,
   },
   postCard: {
-    marginBottom: wp(6),
+    // Removed bottom margin since item separator spacing handles it perfectly now
   },
   postHeader: {
     flexDirection: 'row',
@@ -456,7 +447,7 @@ const styles = StyleSheet.create({
   fabButton: {
     position: 'absolute',
     right: wp(4),
-    bottom: wp(19),
+    bottom: wp(7),
     width: wp(14),
     height: wp(14),
     borderRadius: wp(7),
@@ -471,42 +462,5 @@ const styles = StyleSheet.create({
     fontSize: Fontsize.SEVEN,
     includeFontPadding: false,
     fontWeight: '300',
-  },
-  bottomNav: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: wp(15),
-    borderTopWidth: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  navItem: {
-    padding: wp(2),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  navIcon: {
-    fontSize: Fontsize.FIVE,
-    opacity: 0.4,
-  },
-  notificationBadge: {
-    position: 'absolute',
-    top: wp(-1),
-    right: wp(-1.5),
-    backgroundColor: '#FF3B30',
-    borderRadius: wp(2),
-    paddingHorizontal: wp(1),
-    paddingVertical: wp(0.25),
-    minWidth: wp(4),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  badgeText: {
-    color: '#FFFFFF',
-    fontSize: Fontsize.TWO_DOT_FIVE,
-    fontFamily: FontFamily.GoogleSansBold,
   },
 });
