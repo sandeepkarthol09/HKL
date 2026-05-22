@@ -1,0 +1,69 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-Bold.ttf",
+      "sha1": "ad7f9d9ad1a373ae4699688a61fede06b04175cf"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-BoldItalic.ttf",
+      "sha1": "128bfc5065cd70e234e3bcdb03e1b0c8420c9048"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-Italic.ttf",
+      "sha1": "4fceae24bd7b9cf85bb7f78c6c5239d521ae869c"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-Medium.ttf",
+      "sha1": "2e712f93755697daba9eb023440eabcc18718f35"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-MediumItalic.ttf",
+      "sha1": "7446fac28a379b9e9788065efe139cfa03324372"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-Regular.ttf",
+      "sha1": "4710323de12ee805911e0902c53fece3a9e2d61d"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-SemiBold.ttf",
+      "sha1": "809c5b2dd9c2cebde97d469d87b84641c5448d8f"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans_17pt-SemiBoldItalic.ttf",
+      "sha1": "df9fe9a82f311aa3063cecaa79ea3203ae315e8b"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-Bold.ttf",
+      "sha1": "f4d66c1110e8905103392df9b05ea25638988149"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-BoldItalic.ttf",
+      "sha1": "a38e94cf8c60f9dff9af001a4206cd2010000926"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-Italic.ttf",
+      "sha1": "386f0aa110e3c405eb36c34190af145af667393d"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-Medium.ttf",
+      "sha1": "3db7fe56727976e0d3c3ea0d746f0c01391ab8d6"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-MediumItalic.ttf",
+      "sha1": "2221a0298e51be0fd4a5e35a0044de9f7faabfb0"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-Regular.ttf",
+      "sha1": "3ade9baccafcc1c84f4bf06c0caa2e8dbd22bcf2"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-SemiBold.ttf",
+      "sha1": "6d48514292ed1393e7b00259ce860f974903f1fd"
+    },
+    {
+      "path": "src/core/value/fonts/GoogleSans-SemiBoldItalic.ttf",
+      "sha1": "4cf574d5ec55e77537db8130df030b0120f1e9c6"
+    }
+  ]
+}

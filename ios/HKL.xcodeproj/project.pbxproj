@@ -12,6 +12,22 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A4084042D19E45E39C24ADD9 /* GoogleSans_17pt-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C869345504C4530B23A45F1 /* GoogleSans_17pt-Bold.ttf */; };
+		BB9C1912D99C46F8A76BA82B /* GoogleSans_17pt-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2745FB725704E7A9F41C1CE /* GoogleSans_17pt-BoldItalic.ttf */; };
+		F122C71E951546F49DD55858 /* GoogleSans_17pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EAC12C6CE43450C8F8AC5FD /* GoogleSans_17pt-Regular.ttf */; };
+		3E9A2129277040CCBD78323F /* GoogleSans_17pt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC2F19AADB7C4563AF596706 /* GoogleSans_17pt-SemiBold.ttf */; };
+		0F324CCB54214AE28203552B /* GoogleSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E58F38E6FF7D46CAB5313BF5 /* GoogleSans-Italic.ttf */; };
+		F5AB42F4621B412FA5692C4E /* GoogleSans_17pt-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 016FDF8882864616876D60C6 /* GoogleSans_17pt-SemiBoldItalic.ttf */; };
+		FBDFFDEAE8054E9D80C99754 /* GoogleSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45D9090F61364D96A861F107 /* GoogleSans-SemiBold.ttf */; };
+		6DBF54B0819648FF81E7B05C /* GoogleSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9697798E2C842C2A0C5CF62 /* GoogleSans-Bold.ttf */; };
+		F24AA054212647E4BF12B4BF /* GoogleSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A43B6A25141A4C708DF8992C /* GoogleSans-BoldItalic.ttf */; };
+		2557506EEDDC44C29D4B522B /* GoogleSans_17pt-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9E21D0EC48849E88F2CC67E /* GoogleSans_17pt-Italic.ttf */; };
+		37A370270579471F87CE58CF /* GoogleSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18B1728CA69345D8ADE8E872 /* GoogleSans-Regular.ttf */; };
+		20871CA475C34396B3B9B4B3 /* GoogleSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F74FBFEA3FFC4C64AA64E053 /* GoogleSans-MediumItalic.ttf */; };
+		C85389C3FA3648D0B356F1C0 /* GoogleSans_17pt-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6556527B7214429986071237 /* GoogleSans_17pt-Medium.ttf */; };
+		662584B541824712BA59824B /* GoogleSans_17pt-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92A3BF8122754A0F9AC364D1 /* GoogleSans_17pt-MediumItalic.ttf */; };
+		0BA003F531144D9B94E2C883 /* GoogleSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0E8FE290FF5438388BC0A09 /* GoogleSans-SemiBoldItalic.ttf */; };
+		B77A253D8F294FB98CC9BBB6 /* GoogleSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AABFA0D4059146C98BFC2718 /* GoogleSans-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +41,22 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HKL/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = HKL/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		6C869345504C4530B23A45F1 /* GoogleSans_17pt-Bold.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-Bold.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A2745FB725704E7A9F41C1CE /* GoogleSans_17pt-BoldItalic.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-BoldItalic.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8EAC12C6CE43450C8F8AC5FD /* GoogleSans_17pt-Regular.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-Regular.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AC2F19AADB7C4563AF596706 /* GoogleSans_17pt-SemiBold.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-SemiBold.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E58F38E6FF7D46CAB5313BF5 /* GoogleSans-Italic.ttf */ = {isa = PBXFileReference; name = "GoogleSans-Italic.ttf"; path = "../src/core/value/fonts/GoogleSans-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		016FDF8882864616876D60C6 /* GoogleSans_17pt-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-SemiBoldItalic.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		45D9090F61364D96A861F107 /* GoogleSans-SemiBold.ttf */ = {isa = PBXFileReference; name = "GoogleSans-SemiBold.ttf"; path = "../src/core/value/fonts/GoogleSans-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A9697798E2C842C2A0C5CF62 /* GoogleSans-Bold.ttf */ = {isa = PBXFileReference; name = "GoogleSans-Bold.ttf"; path = "../src/core/value/fonts/GoogleSans-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A43B6A25141A4C708DF8992C /* GoogleSans-BoldItalic.ttf */ = {isa = PBXFileReference; name = "GoogleSans-BoldItalic.ttf"; path = "../src/core/value/fonts/GoogleSans-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D9E21D0EC48849E88F2CC67E /* GoogleSans_17pt-Italic.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-Italic.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		18B1728CA69345D8ADE8E872 /* GoogleSans-Regular.ttf */ = {isa = PBXFileReference; name = "GoogleSans-Regular.ttf"; path = "../src/core/value/fonts/GoogleSans-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F74FBFEA3FFC4C64AA64E053 /* GoogleSans-MediumItalic.ttf */ = {isa = PBXFileReference; name = "GoogleSans-MediumItalic.ttf"; path = "../src/core/value/fonts/GoogleSans-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6556527B7214429986071237 /* GoogleSans_17pt-Medium.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-Medium.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		92A3BF8122754A0F9AC364D1 /* GoogleSans_17pt-MediumItalic.ttf */ = {isa = PBXFileReference; name = "GoogleSans_17pt-MediumItalic.ttf"; path = "../src/core/value/fonts/GoogleSans_17pt-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B0E8FE290FF5438388BC0A09 /* GoogleSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "GoogleSans-SemiBoldItalic.ttf"; path = "../src/core/value/fonts/GoogleSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AABFA0D4059146C98BFC2718 /* GoogleSans-Medium.ttf */ = {isa = PBXFileReference; name = "GoogleSans-Medium.ttf"; path = "../src/core/value/fonts/GoogleSans-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +107,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				5E69C2205CDF43C4A42386DA /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -97,6 +130,30 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		5E69C2205CDF43C4A42386DA /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				6C869345504C4530B23A45F1 /* GoogleSans_17pt-Bold.ttf */,
+				A2745FB725704E7A9F41C1CE /* GoogleSans_17pt-BoldItalic.ttf */,
+				8EAC12C6CE43450C8F8AC5FD /* GoogleSans_17pt-Regular.ttf */,
+				AC2F19AADB7C4563AF596706 /* GoogleSans_17pt-SemiBold.ttf */,
+				E58F38E6FF7D46CAB5313BF5 /* GoogleSans-Italic.ttf */,
+				016FDF8882864616876D60C6 /* GoogleSans_17pt-SemiBoldItalic.ttf */,
+				45D9090F61364D96A861F107 /* GoogleSans-SemiBold.ttf */,
+				A9697798E2C842C2A0C5CF62 /* GoogleSans-Bold.ttf */,
+				A43B6A25141A4C708DF8992C /* GoogleSans-BoldItalic.ttf */,
+				D9E21D0EC48849E88F2CC67E /* GoogleSans_17pt-Italic.ttf */,
+				18B1728CA69345D8ADE8E872 /* GoogleSans-Regular.ttf */,
+				F74FBFEA3FFC4C64AA64E053 /* GoogleSans-MediumItalic.ttf */,
+				6556527B7214429986071237 /* GoogleSans_17pt-Medium.ttf */,
+				92A3BF8122754A0F9AC364D1 /* GoogleSans_17pt-MediumItalic.ttf */,
+				B0E8FE290FF5438388BC0A09 /* GoogleSans-SemiBoldItalic.ttf */,
+				AABFA0D4059146C98BFC2718 /* GoogleSans-Medium.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -161,6 +218,22 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				084D5F581B867DD45CBE91AE /* PrivacyInfo.xcprivacy in Resources */,
+				A4084042D19E45E39C24ADD9 /* GoogleSans_17pt-Bold.ttf in Resources */,
+				BB9C1912D99C46F8A76BA82B /* GoogleSans_17pt-BoldItalic.ttf in Resources */,
+				F122C71E951546F49DD55858 /* GoogleSans_17pt-Regular.ttf in Resources */,
+				3E9A2129277040CCBD78323F /* GoogleSans_17pt-SemiBold.ttf in Resources */,
+				0F324CCB54214AE28203552B /* GoogleSans-Italic.ttf in Resources */,
+				F5AB42F4621B412FA5692C4E /* GoogleSans_17pt-SemiBoldItalic.ttf in Resources */,
+				FBDFFDEAE8054E9D80C99754 /* GoogleSans-SemiBold.ttf in Resources */,
+				6DBF54B0819648FF81E7B05C /* GoogleSans-Bold.ttf in Resources */,
+				F24AA054212647E4BF12B4BF /* GoogleSans-BoldItalic.ttf in Resources */,
+				2557506EEDDC44C29D4B522B /* GoogleSans_17pt-Italic.ttf in Resources */,
+				37A370270579471F87CE58CF /* GoogleSans-Regular.ttf in Resources */,
+				20871CA475C34396B3B9B4B3 /* GoogleSans-MediumItalic.ttf in Resources */,
+				C85389C3FA3648D0B356F1C0 /* GoogleSans_17pt-Medium.ttf in Resources */,
+				662584B541824712BA59824B /* GoogleSans_17pt-MediumItalic.ttf in Resources */,
+				0BA003F531144D9B94E2C883 /* GoogleSans-SemiBoldItalic.ttf in Resources */,
+				B77A253D8F294FB98CC9BBB6 /* GoogleSans-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

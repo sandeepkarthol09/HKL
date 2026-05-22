@@ -17,6 +17,10 @@ import {
 } from 'react-native';
 import imagepaths from '../components/imagepaths';
 import { useAppTheme } from '../theme/useAppTheme';
+import Fontfamily from '../core/value/Fontfamily';
+import Fontsize from '../core/value/Fontsize';
+import FontFamily from '../core/value/Fontfamily';
+import { wp } from '../core/value/Constants';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -141,7 +145,7 @@ export const LoginScreen = ({ navigation }: any) => {
                 Welcome to HKL
               </Text>
               <Text style={[styles.subtitleText, { color: theme.textMuted }]}>
-                Enter the email associated with your HKL account.
+                Enter the email associated with your community account.
               </Text>
             </Animated.View>
 
@@ -281,19 +285,15 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   welcomeText: {
-    fontSize: 32,
-    fontWeight: '700',
-    marginBottom: 12,
+    fontSize: Fontsize.EIGHT,
     textAlign: 'center',
-    letterSpacing: -0.5,
+    fontFamily: FontFamily.GoogleSansBold,
   },
   subtitleText: {
-    fontSize: 16,
-    fontWeight: '400',
     textAlign: 'center',
-    lineHeight: 22,
-    paddingHorizontal: 20,
-    marginBottom: 16,
+    paddingHorizontal: wp(7),
+    fontFamily: Fontfamily.GoogleSans17ptMedium,
+    fontSize: Fontsize.FOUR,
   },
   formContainer: {
     width: '100%',

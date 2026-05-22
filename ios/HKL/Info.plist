@@ -34,7 +34,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>RCTNewArchEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -56,5 +56,24 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GoogleSans_17pt-Bold.ttf</string>
+		<string>GoogleSans_17pt-BoldItalic.ttf</string>
+		<string>GoogleSans_17pt-Regular.ttf</string>
+		<string>GoogleSans_17pt-SemiBold.ttf</string>
+		<string>GoogleSans-Italic.ttf</string>
+		<string>GoogleSans_17pt-SemiBoldItalic.ttf</string>
+		<string>GoogleSans-SemiBold.ttf</string>
+		<string>GoogleSans-Bold.ttf</string>
+		<string>GoogleSans-BoldItalic.ttf</string>
+		<string>GoogleSans_17pt-Italic.ttf</string>
+		<string>GoogleSans-Regular.ttf</string>
+		<string>GoogleSans-MediumItalic.ttf</string>
+		<string>GoogleSans_17pt-Medium.ttf</string>
+		<string>GoogleSans_17pt-MediumItalic.ttf</string>
+		<string>GoogleSans-SemiBoldItalic.ttf</string>
+		<string>GoogleSans-Medium.ttf</string>
+	</array>
 </dict>
 </plist>
