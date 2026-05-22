@@ -25,7 +25,7 @@ export const useAppTheme = () => {
 
     // NEW HKL Custom Branding Additions
     brandLogoColor: isDark ? '#FFFFFF' : '#0F4C43',
-    commitmentBg: isDark ? '#1C1C1E' : '#FFFDF4',
+    commitmentBg: isDark ? '#1C1C1E' : '#FFFFFF',
     commitmentBorder: isDark ? '#2C2C2E' : '#F3EFE0',
     tabActiveBg: isDark ? '#FFFFFF' : '#000000',
     tabActiveText: isDark ? '#000000' : '#FFFFFF',
