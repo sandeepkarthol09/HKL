@@ -21,6 +21,7 @@ import Fontfamily from '../core/value/Fontfamily';
 import Fontsize from '../core/value/Fontsize';
 import FontFamily from '../core/value/Fontfamily';
 import { wp } from '../core/value/Constants';
+import { COLORS } from '../theme/colors';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
@@ -263,7 +264,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: SCREEN_HEIGHT * 0.08,
   },
   headerContainer: {
     alignItems: 'center',
@@ -271,8 +271,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   logoOuterCircle: {
-    width: 96,
-    height: 96,
+    width: wp(25),
+    height: wp(25),
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -281,19 +281,20 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   logoImage: {
-    width: '100%',
-    height: '100%',
+    width: '90%',
+    height: '90%',
   },
   welcomeText: {
     fontSize: Fontsize.EIGHT,
     textAlign: 'center',
     fontFamily: FontFamily.GoogleSansBold,
+    marginBottom: wp(-5),
   },
   subtitleText: {
     textAlign: 'center',
     paddingHorizontal: wp(7),
     fontFamily: Fontfamily.GoogleSans17ptMedium,
-    fontSize: Fontsize.FOUR,
+    fontSize: Fontsize.THREE_DOT_EIGHT,
   },
   formContainer: {
     width: '100%',
@@ -302,7 +303,6 @@ const styles = StyleSheet.create({
   inputWrapper: {
     width: '100%',
     borderRadius: 14,
-    height: 56,
     paddingHorizontal: 18,
     justifyContent: 'center',
     borderWidth: 1.5,
@@ -320,8 +320,9 @@ const styles = StyleSheet.create({
     }),
   },
   input: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontFamily: FontFamily.GoogleSans17ptRegular,
+    fontSize: Fontsize.THREE_DOT_FOUR,
+    marginTop: wp(1),
   },
   buttonContainer: {
     width: '100%',
@@ -329,10 +330,10 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     borderRadius: 28,
-    height: 56,
     width: 200,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: wp(2),
     ...Platform.select({
       ios: {
         shadowColor: '#6366F1',
@@ -346,8 +347,10 @@ const styles = StyleSheet.create({
     }),
   },
   continueButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontFamily: FontFamily.GoogleSans17ptBold,
+    fontSize: Fontsize.THREE_DOT_FOUR,
+    alignSelf: 'center',
+    marginTop: wp(2),
   },
   footerContainer: {
     paddingVertical: 24,
@@ -356,10 +359,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   footerText: {
-    fontSize: 13,
+    fontSize: Fontsize.THREE_DOT_TWO,
     textAlign: 'center',
     lineHeight: 18,
     paddingHorizontal: 16,
+    fontFamily: FontFamily.GoogleSansRegular,
   },
   footerLink: {
     fontWeight: '500',

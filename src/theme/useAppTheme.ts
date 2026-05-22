@@ -10,7 +10,7 @@ export const useAppTheme = () => {
     background: isDark ? '#000000' : COLORS.background,
     textPrimary: isDark ? '#FFFFFF' : COLORS.textPrimary,
     textMuted: isDark ? '#7E7E86' : COLORS.textMuted,
-    logoBg: isDark ? '#1E1E24' : '#FFFFFF',
+    logoBg: isDark ? '#060640ff' : '#060640ff',
     logoBorder: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(99, 102, 241, 0.2)',
     inputBg: isDark ? '#1C1C1E' : '#FFFFFF',
     inputBorder: isDark ? 'transparent' : 'rgba(16, 14, 14, 0.08)',
