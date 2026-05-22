@@ -288,13 +288,15 @@ const styles = StyleSheet.create({
     fontSize: Fontsize.EIGHT,
     textAlign: 'center',
     fontFamily: FontFamily.GoogleSansBold,
-    marginBottom: wp(-5),
+    includeFontPadding: false,
   },
   subtitleText: {
+    includeFontPadding: false,
     textAlign: 'center',
     paddingHorizontal: wp(7),
     fontFamily: Fontfamily.GoogleSans17ptMedium,
     fontSize: Fontsize.THREE_DOT_EIGHT,
+    marginTop:wp(3)
   },
   formContainer: {
     width: '100%',
@@ -304,6 +306,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 14,
     paddingHorizontal: 18,
+    paddingVertical:wp(1),
     justifyContent: 'center',
     borderWidth: 1.5,
     marginBottom: 24,
@@ -323,6 +326,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.GoogleSans17ptRegular,
     fontSize: Fontsize.THREE_DOT_FOUR,
     marginTop: wp(1),
+    includeFontPadding: false,
   },
   buttonContainer: {
     width: '100%',
@@ -331,6 +335,7 @@ const styles = StyleSheet.create({
   continueButton: {
     borderRadius: 28,
     width: 200,
+     paddingVertical:wp(3),
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: wp(2),
@@ -350,7 +355,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.GoogleSans17ptBold,
     fontSize: Fontsize.THREE_DOT_FOUR,
     alignSelf: 'center',
-    marginTop: wp(2),
+    includeFontPadding: false,
   },
   footerContainer: {
     paddingVertical: 24,
