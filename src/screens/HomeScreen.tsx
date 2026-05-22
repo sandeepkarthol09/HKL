@@ -232,6 +232,16 @@ export const HomeScreen = ({ navigation }: any) => {
                 </Text>
               </TouchableOpacity>
             </View>
+
+            <View
+              style={{
+                width: wp(90),
+                height: wp(0.1),
+                marginTop: wp(4),
+                backgroundColor: theme.textMuted,
+                alignSelf: 'center',
+              }}
+            />
           </View>
         ))}
       </ScrollView>
@@ -387,7 +397,7 @@ const styles = StyleSheet.create({
     fontSize: Fontsize.THREE_DOT_FIVE,
     fontFamily: FontFamily.GoogleSansRegular,
     includeFontPadding: false,
-    width:'92%',
+    width: '92%',
   },
   postAuthor: {
     fontFamily: FontFamily.GoogleSansBold,
