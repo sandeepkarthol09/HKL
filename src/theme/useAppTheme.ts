@@ -22,6 +22,18 @@ export const useAppTheme = () => {
     linkText: isDark ? COLORS.primaryLight : COLORS.primary,
     statusBar: isDark ? 'light-content' : 'dark-content',
     statusBarBg: isDark ? '#000000' : COLORS.background,
+
+    // NEW HKL Custom Branding Additions
+    brandLogoColor: isDark ? '#FFFFFF' : '#0F4C43',
+    commitmentBg: isDark ? '#1C1C1E' : '#FFFDF4',
+    commitmentBorder: isDark ? '#2C2C2E' : '#F3EFE0',
+    tabActiveBg: isDark ? '#FFFFFF' : '#000000',
+    tabActiveText: isDark ? '#000000' : '#FFFFFF',
+    tabInactiveBg: isDark ? '#2C2C2E' : '#F0F2F5',
+    fabBg: isDark ? '#2C2C2E' : '#FFFFFF',
+    fabShadow: isDark ? '#FFFFFF' : '#000000',
+    bottomNavBg: isDark ? '#1C1C1E' : '#FFFFFF',
+    bottomNavBorder: isDark ? '#2C2C2E' : '#ECECEC',
   };
 
   return theme;
