@@ -125,25 +125,35 @@ export const HomeScreen = ({ navigation }: any) => {
       style={[
         styles.commitmentCard,
         {
-          backgroundColor: theme.commitmentBg,
           borderColor: theme.commitmentBorder,
         },
       ]}
     >
-      <View style={styles.commitmentHeaderRow}>
+      {/* Top section with background color, logo and title */}
+      <View
+        style={[styles.commitmentHeaderRow, { backgroundColor: '#FFF8EE' }]}
+      >
         <Image
-          source={{
-            uri: 'https://picsum.photos/200/300',
-          }}
-          style={{
-            width: '100%',
-            height: wp(30),
-            borderTopLeftRadius: wp(4),
-            borderTopRightRadius: wp(4),
-          }}
+          source={imagepaths.logo} // Make sure this matches your crest logo path in imagepaths
+          style={styles.crestLogo}
+          resizeMode="contain"
         />
+        <View style={styles.commitmentTitleContainer}>
+          <Text style={[styles.commitmentTitle, { color: theme.textPrimary }]}>
+            My Daily Commitment
+          </Text>
+          <Text
+            style={[styles.commitmentSubTitle, { color: theme.textPrimary }]}
+          >
+            For The Week
+          </Text>
+          <Text style={[styles.commitmentActionHint, { color: '#0A4433' }]}>
+            Access today's practice below & track your daily progress
+          </Text>
+        </View>
       </View>
 
+      {/* Bottom text section */}
       <Text style={[styles.commitmentBody, { color: theme.textMuted }]}>
         🌱 Here is this week's practice. Please log your experience daily by{' '}
         <Text style={[styles.hyperlinkText, { color: theme.linkText }]}>
@@ -312,48 +322,50 @@ const styles = StyleSheet.create({
     borderRadius: wp(4),
     borderWidth: 1,
     marginBottom: wp(5),
+    overflow: 'hidden', // Keeps the top header background within the border radius
   },
   commitmentHeaderRow: {
     flexDirection: 'row',
-    marginBottom: wp(3),
-  },
-  crestContainer: {
-    width: wp(14),
-    height: wp(14),
-    borderWidth: 1.2,
-    borderRadius: wp(7),
     alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: wp(3),
+    paddingHorizontal: wp(4),
+    paddingVertical: wp(5),
   },
-  crestFallbackText: {
-    fontSize: Fontsize.THREE,
-    fontFamily: FontFamily.GoogleSansBold,
-    includeFontPadding: false,
+  crestLogo: {
+    width: wp(25),
+    height: wp(25),
+    marginRight: wp(3),
+    borderRadius: wp(2),
   },
   commitmentTitleContainer: {
     flex: 1,
     justifyContent: 'center',
   },
   commitmentTitle: {
-    fontSize: Fontsize.FOUR_DOT_FIVE,
+    fontSize: Fontsize.FIVE,
     fontFamily: FontFamily.GoogleSansBold,
+    lineHeight: wp(6),
+    includeFontPadding: false,
   },
   commitmentSubTitle: {
-    fontSize: Fontsize.FOUR_DOT_FIVE,
+    fontSize: Fontsize.FIVE,
     fontFamily: FontFamily.GoogleSansBold,
-    marginTop: wp(-1),
+    lineHeight: wp(6),
+    marginBottom: wp(2),
+    includeFontPadding: false,
   },
   commitmentActionHint: {
     fontSize: Fontsize.TWO_DOT_EIGHT,
-    fontFamily: FontFamily.GoogleSansRegular,
-    marginTop: wp(1),
+    fontFamily: FontFamily.GoogleSansBold,
+    lineHeight: wp(4),
+    includeFontPadding: false,
   },
   commitmentBody: {
     fontSize: Fontsize.THREE_DOT_FIVE,
     fontFamily: FontFamily.GoogleSansRegular,
-    lineHeight: wp(5),
-    padding: wp(4),
+    lineHeight: wp(5.5),
+    paddingHorizontal: wp(4),
+    paddingTop: wp(5),
+    paddingBottom: wp(5),
     includeFontPadding: false,
   },
   hyperlinkText: {
