@@ -12,15 +12,19 @@ import {
   Platform,
   ScrollView,
   Alert,
+  Image,
+  Dimensions,
 } from 'react-native';
-import { COLORS } from '../theme/colors';
+import imagepaths from '../components/imagepaths';
+import { useAppTheme } from '../theme/useAppTheme';
+
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [emailFocused, setEmailFocused] = useState(false);
-  const [passwordFocused, setPasswordFocused] = useState(false);
+  const theme = useAppTheme();
+
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(40)).current;
@@ -58,8 +62,13 @@ export const LoginScreen = ({ navigation }: any) => {
   }, [fadeAnim, slideAnim, formFade, formSlide]);
 
   const handleLogin = () => {
-    if (!email || !password) {
-      Alert.alert('Missing Fields', 'Please enter both email and password.');
+    if (!email) {
+      Alert.alert('Missing Field', 'Please enter your email.');
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Alert.alert('Invalid Email', 'Please enter a valid email address.');
       return;
     }
     navigation.navigate('Main');
@@ -81,66 +90,72 @@ export const LoginScreen = ({ navigation }: any) => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="light-content" backgroundColor={COLORS.background} />
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background }]}>
+      <StatusBar
+        barStyle={theme.statusBar as any}
+        backgroundColor={theme.statusBarBg}
+        translucent={true}
+      />
       <KeyboardAvoidingView
         style={styles.flex}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       >
         <ScrollView
-          contentContainerStyle={styles.scrollContent}
+          contentContainerStyle={[styles.scrollContent, { backgroundColor: theme.background }]}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          {/* Background orbs */}
-          <View style={styles.bgOrb1} />
-          <View style={styles.bgOrb2} />
+          <View style={styles.mainContainer}>
+            {/* Top Logo & Header */}
+            <Animated.View
+              style={[
+                styles.headerContainer,
+                {
+                  opacity: fadeAnim,
+                  transform: [{ translateY: slideAnim }],
+                },
+              ]}
+            >
+              {/* Perfect Circular Logo */}
+              <View style={[styles.logoOuterCircle, {
+                backgroundColor: theme.logoBg,
+                borderColor: theme.logoBorder,
+              }]}>
+                <Image
+                  source={imagepaths.logo}
+                  style={styles.logoImage}
+                  resizeMode="cover"
+                />
+              </View>
 
-          {/* Header */}
-          <Animated.View
-            style={[
-              styles.headerContainer,
-              {
-                opacity: fadeAnim,
-                transform: [{ translateY: slideAnim }],
-              },
-            ]}
-          >
-            {/* Mini Logo */}
-            <View style={styles.miniLogo}>
-              <Text style={styles.miniLogoText}>HKL</Text>
-            </View>
+              <Text style={[styles.welcomeText, { color: theme.textPrimary }]}>Welcome to HKL</Text>
+              <Text style={[styles.subtitleText, { color: theme.textMuted }]}>
+                Enter the email associated with your HKL account.
+              </Text>
+            </Animated.View>
 
-            <Text style={styles.welcomeText}>Welcome Back</Text>
-            <Text style={styles.subtitleText}>
-              Sign in to access your portfolio
-            </Text>
-          </Animated.View>
-
-          {/* Form */}
-          <Animated.View
-            style={[
-              styles.formContainer,
-              {
-                opacity: formFade,
-                transform: [{ translateY: formSlide }],
-              },
-            ]}
-          >
-            {/* Email Input */}
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
-              <View
-                style={[
-                  styles.inputWrapper,
-                  emailFocused && styles.inputWrapperFocused,
-                ]}
-              >
-                <Text style={styles.inputIcon}>✉️</Text>
+            {/* Input & Button Form */}
+            <Animated.View
+              style={[
+                styles.formContainer,
+                {
+                  opacity: formFade,
+                  transform: [{ translateY: formSlide }],
+                },
+              ]}
+            >
+              {/* Email Input */}
+              <View style={[
+                styles.inputWrapper,
+                {
+                  backgroundColor: theme.inputBg,
+                  borderColor: emailFocused ? theme.inputBorderFocused : theme.inputBorder,
+                },
+              ]}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="you@example.com"
-                  placeholderTextColor={COLORS.textMuted}
+                  style={[styles.input, { color: theme.inputText }]}
+                  placeholder="Your email"
+                  placeholderTextColor={theme.inputPlaceholder}
                   value={email}
                   onChangeText={setEmail}
                   keyboardType="email-address"
@@ -149,91 +164,41 @@ export const LoginScreen = ({ navigation }: any) => {
                   onBlur={() => setEmailFocused(false)}
                 />
               </View>
-            </View>
 
-            {/* Password Input */}
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>PASSWORD</Text>
-              <View
-                style={[
-                  styles.inputWrapper,
-                  passwordFocused && styles.inputWrapperFocused,
-                ]}
-              >
-                <Text style={styles.inputIcon}>🔒</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Enter your password"
-                  placeholderTextColor={COLORS.textMuted}
-                  value={password}
-                  onChangeText={setPassword}
-                  secureTextEntry={!showPassword}
-                  onFocus={() => setPasswordFocused(true)}
-                  onBlur={() => setPasswordFocused(false)}
-                />
+              {/* Centered Continue Button */}
+              <Animated.View style={[styles.buttonContainer, { transform: [{ scale: buttonScale }] }]}>
                 <TouchableOpacity
-                  onPress={() => setShowPassword(!showPassword)}
-                  style={styles.eyeButton}
+                  style={[styles.continueButton, { backgroundColor: theme.btnBg }]}
+                  onPress={handleLogin}
+                  onPressIn={handlePressIn}
+                  onPressOut={handlePressOut}
+                  activeOpacity={0.9}
                 >
-                  <Text style={styles.eyeIcon}>
-                    {showPassword ? '👁️' : '👁️‍🗨️'}
-                  </Text>
+                  <Text style={[styles.continueButtonText, { color: theme.btnText }]}>Continue</Text>
                 </TouchableOpacity>
-              </View>
-            </View>
-
-            {/* Forgot Password */}
-            <TouchableOpacity style={styles.forgotContainer}>
-              <Text style={styles.forgotText}>Forgot Password?</Text>
-            </TouchableOpacity>
-
-            {/* Login Button */}
-            <Animated.View style={{ transform: [{ scale: buttonScale }] }}>
-              <TouchableOpacity
-                style={styles.loginButton}
-                onPress={handleLogin}
-                onPressIn={handlePressIn}
-                onPressOut={handlePressOut}
-                activeOpacity={0.9}
-              >
-                <View style={styles.loginButtonInner}>
-                  <Text style={styles.loginButtonText}>Sign In</Text>
-                  <Text style={styles.loginArrow}>→</Text>
-                </View>
-              </TouchableOpacity>
+              </Animated.View>
             </Animated.View>
+          </View>
 
-            {/* Divider */}
-            <View style={styles.dividerContainer}>
-              <View style={styles.dividerLine} />
-              <Text style={styles.dividerText}>or continue with</Text>
-              <View style={styles.dividerLine} />
-            </View>
-
-            {/* Social Buttons */}
-            <View style={styles.socialRow}>
-              <TouchableOpacity style={styles.socialButton}>
-                <Text style={styles.socialEmoji}>🍎</Text>
-                <Text style={styles.socialLabel}>Apple</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton}>
-                <Text style={styles.socialEmoji}>🔵</Text>
-                <Text style={styles.socialLabel}>Google</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.socialButton}>
-                <Text style={styles.socialEmoji}>📘</Text>
-                <Text style={styles.socialLabel}>Facebook</Text>
-              </TouchableOpacity>
-            </View>
-
-            {/* Sign Up Link */}
-            <View style={styles.signupContainer}>
-              <Text style={styles.signupText}>Don't have an account? </Text>
-              <TouchableOpacity>
-                <Text style={styles.signupLink}>Sign Up</Text>
-              </TouchableOpacity>
-            </View>
-          </Animated.View>
+          {/* Privacy & Terms Bottom Footer */}
+          <View style={styles.footerContainer}>
+            <Text style={[styles.footerText, { color: theme.textMuted }]}>
+              By signing in, you agree to the{' '}
+              <Text
+                style={[styles.footerLink, { color: theme.linkText }]}
+                onPress={() => Alert.alert('Terms of Service', 'Terms & conditions coming soon.')}
+              >
+                terms of service
+              </Text>
+              {' '}and have read the{' '}
+              <Text
+                style={[styles.footerLink, { color: theme.linkText }]}
+                onPress={() => Alert.alert('Privacy Policy', 'Privacy policy coming soon.')}
+              >
+                privacy policy
+              </Text>.
+            </Text>
+          </View>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -243,7 +208,6 @@ export const LoginScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: COLORS.background,
   },
   flex: {
     flex: 1,
@@ -251,197 +215,115 @@ const styles = StyleSheet.create({
   scrollContent: {
     flexGrow: 1,
     paddingHorizontal: 24,
-    paddingBottom: 40,
+    justifyContent: 'space-between',
   },
-  bgOrb1: {
-    position: 'absolute',
-    width: 280,
-    height: 280,
-    borderRadius: 140,
-    backgroundColor: COLORS.primary,
-    opacity: 0.05,
-    top: -80,
-    right: -60,
-  },
-  bgOrb2: {
-    position: 'absolute',
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    backgroundColor: COLORS.secondary,
-    opacity: 0.04,
-    bottom: 100,
-    left: -50,
+  mainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: SCREEN_HEIGHT * 0.08,
   },
   headerContainer: {
     alignItems: 'center',
-    marginTop: 60,
-    marginBottom: 40,
+    marginBottom: 32,
+    width: '100%',
   },
-  miniLogo: {
-    width: 64,
-    height: 64,
-    borderRadius: 20,
-    backgroundColor: 'rgba(99, 102, 241, 0.12)',
-    borderWidth: 1.5,
-    borderColor: 'rgba(99, 102, 241, 0.3)',
-    alignItems: 'center',
+  logoOuterCircle: {
+    width: 96,
+    height: 96,
+    borderRadius: 10,
     justifyContent: 'center',
-    marginBottom: 24,
+    alignItems: 'center',
+    marginBottom: 28,
+    overflow: 'hidden',
+    borderWidth: 1,
   },
-  miniLogoText: {
-    fontSize: 22,
-    fontWeight: '900',
-    color: COLORS.primaryLight,
-    letterSpacing: 2,
+  logoImage: {
+    width: '100%',
+    height: '100%',
   },
   welcomeText: {
-    fontSize: 28,
-    fontWeight: '800',
-    color: COLORS.textPrimary,
-    letterSpacing: 0.3,
-    marginBottom: 8,
+    fontSize: 32,
+    fontWeight: '700',
+    marginBottom: 12,
+    textAlign: 'center',
+    letterSpacing: -0.5,
   },
   subtitleText: {
-    fontSize: 15,
-    fontWeight: '500',
-    color: COLORS.textMuted,
-    letterSpacing: 0.3,
+    fontSize: 16,
+    fontWeight: '400',
+    textAlign: 'center',
+    lineHeight: 22,
+    paddingHorizontal: 20,
+    marginBottom: 16,
   },
   formContainer: {
-    flex: 1,
-  },
-  inputGroup: {
-    marginBottom: 20,
-  },
-  inputLabel: {
-    color: COLORS.textSecondary,
-    fontSize: 11,
-    fontWeight: '700',
-    letterSpacing: 1.5,
-    marginBottom: 8,
-    marginLeft: 4,
+    width: '100%',
+    alignItems: 'center',
   },
   inputWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(22, 22, 38, 0.8)',
-    borderRadius: 16,
-    borderWidth: 1.5,
-    borderColor: 'rgba(255, 255, 255, 0.06)',
-    paddingHorizontal: 16,
+    width: '100%',
+    borderRadius: 14,
     height: 56,
-  },
-  inputWrapperFocused: {
-    borderColor: 'rgba(99, 102, 241, 0.5)',
-    backgroundColor: 'rgba(99, 102, 241, 0.04)',
-  },
-  inputIcon: {
-    fontSize: 16,
-    marginRight: 12,
+    paddingHorizontal: 18,
+    justifyContent: 'center',
+    borderWidth: 1.5,
+    marginBottom: 24,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#000000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.04,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
   input: {
-    flex: 1,
-    color: COLORS.textPrimary,
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '500',
   },
-  eyeButton: {
-    padding: 4,
+  buttonContainer: {
+    width: '100%',
+    alignItems: 'center',
   },
-  eyeIcon: {
-    fontSize: 16,
-  },
-  forgotContainer: {
-    alignSelf: 'flex-end',
-    marginBottom: 28,
-    marginTop: -4,
-  },
-  forgotText: {
-    color: COLORS.primaryLight,
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  loginButton: {
-    backgroundColor: COLORS.primary,
-    borderRadius: 16,
+  continueButton: {
+    borderRadius: 28,
     height: 56,
-    overflow: 'hidden',
-    marginBottom: 28,
-  },
-  loginButtonInner: {
-    flex: 1,
-    flexDirection: 'row',
+    width: 200,
     alignItems: 'center',
     justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#6366F1',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 10,
+      },
+      android: {
+        elevation: 4,
+      },
+    }),
   },
-  loginButtonText: {
-    color: '#FFFFFF',
+  continueButtonText: {
     fontSize: 16,
-    fontWeight: '700',
-    letterSpacing: 0.5,
-    marginRight: 8,
-  },
-  loginArrow: {
-    color: '#FFFFFF',
-    fontSize: 18,
     fontWeight: '600',
   },
-  dividerContainer: {
-    flexDirection: 'row',
+  footerContainer: {
+    paddingVertical: 24,
     alignItems: 'center',
-    marginBottom: 24,
+    justifyContent: 'flex-end',
+    width: '100%',
   },
-  dividerLine: {
-    flex: 1,
-    height: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.06)',
-  },
-  dividerText: {
-    color: COLORS.textMuted,
-    fontSize: 12,
-    fontWeight: '500',
-    marginHorizontal: 16,
-  },
-  socialRow: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 12,
-    marginBottom: 32,
-  },
-  socialButton: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(22, 22, 38, 0.8)',
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.06)',
-    paddingVertical: 14,
-    gap: 6,
-  },
-  socialEmoji: {
-    fontSize: 16,
-  },
-  socialLabel: {
-    color: COLORS.textSecondary,
+  footerText: {
     fontSize: 13,
-    fontWeight: '600',
+    textAlign: 'center',
+    lineHeight: 18,
+    paddingHorizontal: 16,
   },
-  signupContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  signupText: {
-    color: COLORS.textMuted,
-    fontSize: 14,
+  footerLink: {
     fontWeight: '500',
-  },
-  signupLink: {
-    color: COLORS.primaryLight,
-    fontSize: 14,
-    fontWeight: '700',
   },
 });

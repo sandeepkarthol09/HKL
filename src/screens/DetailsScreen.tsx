@@ -6,7 +6,6 @@ import {
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
 import { COLORS } from '../theme/colors';
 import { GlassCard } from '../components/GlassCard';
